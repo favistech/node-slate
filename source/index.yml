@@ -1,8 +1,7 @@
 title: API Reference
 
 language_tabs:
-  - bash
-  - javascript
+  - curl
 
 toc_footers:
   - <a href='https://app.mertzcrew.com' target='_blank'>Sign up for an account</a>
