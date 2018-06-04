@@ -2,7 +2,7 @@
 
 > API Endpoint: https://app.mertzcrew.com/api/
 
-Welcome to the Mertzcrew API! You can use our API to access Mertzcrew API endpoints, which allow you to manage all aspects of your projects along with their assigments.
+Welcome to the Mertzcrew API! You can use our API to access Mertzcrew API endpoints, which allow you to manage all aspects of your projects along with their assignments.
 
 The Mertzcrew API is organized around REST. Our API has predictable, resource-oriented URLs, and uses a combination of HTTP response codes to indicate API errors along with a JSON payload for more specific error messages. 
 
@@ -119,3 +119,33 @@ Only projects you have access to are returned by this endpoint.
 Parameter | Description
 --------- | -----------
 ID | The ID of the project to retrieve
+
+# Assignments
+
+## Get All Project Assignments
+
+This endpoint retrieves all assignments for a specific project.
+
+## Get a Specific Project Assignment
+
+This endpoint retrieves a specific assignment for a specific project.
+
+# Contractors
+
+## Search for Contractors
+
+This endpoint allows you to search our database of contractors.
+
+## Get a Specific Contractor
+
+This endpoint retreives a specific contractor.
+
+# Employees
+
+## Search for Employees
+
+This endpoint allows you to search your employee database in Mertzcrew.
+
+## Get a Specific Employee
+
+This endpoint retreives a specific employee in Mertzcrew.
