@@ -120,6 +120,26 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the project to retrieve
 
+## Generate Services - Internal Report Excel Spreadsheet
+
+This endpoint generates an internal services report excel spreadsheet for a specific project supplied by ID.
+
+## Generate Services - Client Report Excel Spreadsheet
+
+This endpoint generates an client services report excel spreadsheet for a specific project supplied by ID.
+
+## Generate Expense Report Excel Spreadsheet
+
+This endpoint generates an expense report excel spreadsheet for a specific project supplied by ID.
+
+## Generate Per Diem Report Excel Spreadsheet
+
+This endpoint generates an per diem report excel spreadsheet for a specific project supplied by ID.
+
+## Generate Crew List Report Excel Spreadsheet
+
+This endpoint generates an client list report excel spreadsheet for a specific project supplied by ID.
+
 # Assignments
 
 ## Get All Project Assignments
@@ -129,6 +149,18 @@ This endpoint retrieves all assignments for a specific project.
 ## Get a Specific Project Assignment
 
 This endpoint retrieves a specific assignment for a specific project.
+
+## Create Project Assignment
+
+This endpoint creates a new assignment for a specific project.
+
+## Edit a Specific Project Assignment
+
+This endpoint edits a specific assignment for a specific project.
+
+## Delete a Specific Project Assignment
+
+This endpoint deletes a specific assignment for a specific project.
 
 # Contractors
 
@@ -149,3 +181,13 @@ This endpoint allows you to search your employee database in Mertzcrew.
 ## Get a Specific Employee
 
 This endpoint retreives a specific employee in Mertzcrew.
+
+# Timesheets
+
+## Get all timesheets
+
+This endpoint allows you to get all timesheet periods along with all timesheet entries.
+
+## Get a specific employee timesheet
+
+This endpoint retreives a specific employee timesheet.
