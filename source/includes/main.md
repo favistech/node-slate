@@ -124,21 +124,41 @@ ID | The ID of the project to retrieve
 
 This endpoint generates an internal services report excel spreadsheet for a specific project supplied by ID.
 
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
+
 ## Generate Services - Client Report Excel Spreadsheet
 
 This endpoint generates an client services report excel spreadsheet for a specific project supplied by ID.
+
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
 
 ## Generate Expense Report Excel Spreadsheet
 
 This endpoint generates an expense report excel spreadsheet for a specific project supplied by ID.
 
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
+
 ## Generate Per Diem Report Excel Spreadsheet
 
 This endpoint generates an per diem report excel spreadsheet for a specific project supplied by ID.
 
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
+
 ## Generate Crew List Report Excel Spreadsheet
 
 This endpoint generates an client list report excel spreadsheet for a specific project supplied by ID.
+
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
 
 # Assignments
 
@@ -146,21 +166,205 @@ This endpoint generates an client list report excel spreadsheet for a specific p
 
 This endpoint retrieves all assignments for a specific project.
 
+```bash
+curl "https://app.mertzcrew.com/api/project/1/contractors"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[{
+  "_id": "2",
+  "department": "Audio",
+  "status": "Accepted",
+  "modified_by": "57ab828fd9f336f86f3b1be8",
+  "modified_on": "2018-05-29T15:09:32.877Z",
+  "daily_rate": 350,
+  "start_date": "2018-06-11T12:00:50.290Z",
+  ...
+}]
+```
+<aside class="warning">
+Only project assignments you have access to are returned by this endpoint.
+</aside>
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/project/<ID>/contractors`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project to retrieve all assignments
+
 ## Get a Specific Project Assignment
 
 This endpoint retrieves a specific assignment for a specific project.
+
+```bash
+curl "https://app.mertzcrew.com/api/project/1/contractor/2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "_id": "2",
+  "department": "Audio",
+  "status": "Accepted",
+  "modified_by": "57ab828fd9f336f86f3b1be8",
+  "modified_on": "2018-05-29T15:09:32.877Z",
+  "daily_rate": 350,
+  "start_date": "2018-06-11T12:00:50.290Z",
+  ...
+}
+```
+<aside class="warning">
+Only a project assignment you have access to are returned by this endpoint.
+</aside>
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/project/<PROJECT_ID>/contractors/<ASSIGNMENT_ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+PROJECT_ID | The ID of the project to retrieve the assignment from
+ASSIGNMENT_ID | The ID of the assignment to retrieve
 
 ## Create Project Assignment
 
 This endpoint creates a new assignment for a specific project.
 
+```bash
+curl -d "@data.json" -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/project/1/contractor"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command requires data.json to have the following format:
+
+```json
+{
+  "contractor": "569702a6026b03086fa378c9",
+  "contractor_role": "4",
+  "daily_rate": 350,
+  "pay_model": "564fda3fc4b109fc4a1726d4",
+  "timesheets": [[{"start_date_time":"2018-08-19","end_date_time":"2018-08-19","break":null,"is_half_day":false,"is_travel":false,"no_time_entries":true},{"start_date_time":"2018-08-20","end_date_time":"2018-08-20","break":null,"is_half_day":false,"is_travel":false,"no_time_entries":true}]]
+  ...
+}
+```
+
+> For a complete list refer to the section POST parameters.
+
+<aside class="warning">
+Only project you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/project/<ID>/contractor`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project to retrieve all assignments
+
+### POST Parameters
+
+Parameter | Description
+--------- | -----------
+contractor | The ID of the contractor if this assignment is for a contractor
+employee | The ID of the employee if this assignment is for an employee
+contractor_role | The ID of the role for this assignment
+daily_rate | The rate amount for this assignment
+pay_model | The ID of the employee 
+timesheets | The schedule of the assignment - this is a JSON object with a start_date_time, end_date_time, break, is_half_day, is_travel, no_time_entries
+
+
 ## Edit a Specific Project Assignment
 
 This endpoint edits a specific assignment for a specific project.
 
+```bash
+curl -d "@data.json" -H "Content-Type: application/json" -X PUT "https://app.mertzcrew.com/api/project/1/contractor/2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command requires data.json to have the following format:
+
+```json
+{
+  "_id": "569702a6026b03086fa378c8",
+  "contractor": "569702a6026b03086fa378c9",
+  "contractor_role": "4",
+  "daily_rate": 350,
+  "pay_model": "564fda3fc4b109fc4a1726d4",
+  "timesheets": [[{"start_date_time":"2018-08-19","end_date_time":"2018-08-19","break":null,"is_half_day":false,"is_travel":false,"no_time_entries":true},{"start_date_time":"2018-08-20","end_date_time":"2018-08-20","break":null,"is_half_day":false,"is_travel":false,"no_time_entries":true}]]
+  ...
+}
+```
+
+> For a complete list refer to the section PUT parameters.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`PUT https://app.mertzcrew.com/api/project/<ID>/contractor/<ASSIGNMENT_ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+ASSIGNMENT_ID | The ID of the assignment you want to edit
+
+### PUT Parameters
+
+Parameter | Description
+--------- | -----------
+_id | The ID of the assignment
+contractor | The ID of the contractor if this assignment is for a contractor
+employee | The ID of the employee if this assignment is for an employee
+contractor_role | The ID of the role for this assignment
+daily_rate | The rate amount for this assignment
+pay_model | The ID of the employee 
+timesheets | The schedule of the assignment - this is a JSON object with a start_date_time, end_date_time, break, is_half_day, is_travel, no_time_entries
+
+
 ## Delete a Specific Project Assignment
 
 This endpoint deletes a specific assignment for a specific project.
+
+```bash
+curl -X DELETE "https://app.mertzcrew.com/api/project/1/contractor/2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns an HTTP status code of 200 if successful. Refer to the Error section for error codes.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`DELETE https://app.mertzcrew.com/api/project/<ID>/contractor/<ASSIGNMENT_ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+ASSIGNMENT_ID | The ID of the assignment you want to edit
 
 # Contractors
 
@@ -168,9 +372,17 @@ This endpoint deletes a specific assignment for a specific project.
 
 This endpoint allows you to search our database of contractors.
 
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
+
 ## Get a Specific Contractor
 
 This endpoint retreives a specific contractor.
+
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
 
 # Employees
 
@@ -178,9 +390,17 @@ This endpoint retreives a specific contractor.
 
 This endpoint allows you to search your employee database in Mertzcrew.
 
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
+
 ## Get a Specific Employee
 
 This endpoint retreives a specific employee in Mertzcrew.
+
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
 
 # Timesheets
 
@@ -188,6 +408,14 @@ This endpoint retreives a specific employee in Mertzcrew.
 
 This endpoint allows you to get all timesheet periods along with all timesheet entries.
 
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
+
 ## Get a specific employee timesheet
 
 This endpoint retreives a specific employee timesheet.
+
+<aside class="notice">
+Upcoming release - check back soon.
+</aside>
