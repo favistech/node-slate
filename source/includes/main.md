@@ -366,23 +366,101 @@ Parameter | Description
 ID | The ID of the project of the assignment 
 ASSIGNMENT_ID | The ID of the assignment you want to edit
 
+## Publish a Specific Project Assignment
+
+This endpoint publishes a specific assignment for a specific project. This generates a contract or notification and sends it to the technician assigned.
+
+```bash
+curl -X POST "https://app.mertzcrew.com/api/project/1/publish/2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns an HTTP status code of 200 if successful. Refer to the Error section for error codes.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/project/<ID>/publish/<ASSIGNMENT_ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+ASSIGNMENT_ID | The ID of the assignment you want to edit
+
+## Publish all Project Assignments
+
+This endpoint publishes all assignments for a specific project. This generates any contracts and/or notifications for the assigned technician.
+
+```bash
+curl -X POST "https://app.mertzcrew.com/api/project/1/publish"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns an HTTP status code of 200 if successful. Refer to the Error section for error codes.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/project/<ID>/publish`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+ASSIGNMENT_ID | The ID of the assignment you want to edit
+
 # Contractors
 
 ## Search for Contractors
 
 This endpoint allows you to search our database of contractors.
 
-<aside class="notice">
-Upcoming release - check back soon.
-</aside>
+```bash
+curl -X GET "https://app.mertzcrew.com/api/contractor/search/stagehand"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns an HTTP status code of 200 if successful. Refer to the Error section for error codes.
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/contractor/search/<CRITERIA>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+CRITERIA | The text you want to use as your search criteria
 
 ## Get a Specific Contractor
 
 This endpoint retreives a specific contractor.
 
-<aside class="notice">
-Upcoming release - check back soon.
-</aside>
+```bash
+curl -X GET "https://app.mertzcrew.com/api/contractor/1"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns an HTTP status code of 200 if successful. Refer to the Error section for error codes.
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/contractor/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the contractor you want to retrieve
 
 # Employees
 
@@ -390,17 +468,43 @@ Upcoming release - check back soon.
 
 This endpoint allows you to search your employee database in Mertzcrew.
 
-<aside class="notice">
-Upcoming release - check back soon.
-</aside>
+```bash
+curl -X GET "https://app.mertzcrew.com/api/employee/search/stagehand"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns an HTTP status code of 200 if successful. Refer to the Error section for error codes.
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/employee/search/<CRITERIA>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+CRITERIA | The text you want to use as your search criteria
 
 ## Get a Specific Employee
 
 This endpoint retreives a specific employee in Mertzcrew.
 
-<aside class="notice">
-Upcoming release - check back soon.
-</aside>
+```bash
+curl -X GET "https://app.mertzcrew.com/api/employee/1"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns an HTTP status code of 200 if successful. Refer to the Error section for error codes.
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/employee/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the employee you want to retrieve
 
 # Timesheets
 
