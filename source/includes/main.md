@@ -37,6 +37,117 @@ You must replace <code>xxxxxxxxxxxx</code> with the token retrieved from the /lo
 
 # Projects
 
+## Create Project
+
+This endpoint creates a new project.
+
+```bash
+curl -d "@data.json" -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/project"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command requires data.json to have the following format:
+
+```json
+{
+  "name": "Testing",
+  "type": "Corporate",
+  "country": 1,
+  "state_province": 12,
+  "city": "Orlando"
+  ...
+}
+```
+
+> For a complete list refer to the section POST parameters.
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/project`
+
+### POST Parameters
+
+Parameter | Description
+--------- | -----------
+name | The name of the project
+type | The project type/classification
+country | The country where this project is located
+state_province | The state/province in the country specified
+city | The city of the state/province specified
+
+## Edit a Specific Project
+
+This endpoint edits a specific project.
+
+```bash
+curl -d "@data.json" -H "Content-Type: application/json" -X PUT "https://app.mertzcrew.com/api/project/1"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command requires data.json to have the following format:
+
+```json
+{
+  "_id": "569702a6026b03086fa378c8",
+  "name": "Testing API",
+  "country": 1,
+  "state_province": 12,
+  "city": "Orlando"
+  ...
+}
+```
+
+> For a complete list refer to the section PUT parameters.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`PUT https://app.mertzcrew.com/api/project/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project you are editing 
+
+### PUT Parameters
+
+Parameter | Description
+--------- | -----------
+_id | The ID of the project
+name | The name of the project
+country | The country where this project is located
+state_province | The state/province in the country specified
+city | The city of the state/province specified
+
+## Delete a Specific Project
+
+This endpoint deletes a specific project.
+
+```bash
+curl -X DELETE "https://app.mertzcrew.com/api/project/1"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns an HTTP status code of 200 if successful. Refer to the Error section for error codes.
+
+<aside class="warning">
+Only projects you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`DELETE https://app.mertzcrew.com/api/project/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project to delete
+
 ## Get All Projects
 
 ```bash
