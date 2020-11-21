@@ -450,6 +450,32 @@ daily_rate | The rate amount for this assignment
 pay_model | The ID of the employee 
 timesheets | The schedule of the assignment - this is a JSON object with a start_date_time, end_date_time, break, is_half_day, is_travel, no_time_entries
 
+## Approve a Specific Project Assignment
+
+This endpoint approves a specific assignment for a specific project.
+
+```bash
+curl -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/project/1/contractor/2/approve"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> For a complete list refer to the section POST parameters.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`PUT https://app.mertzcrew.com/api/project/<ID>/contractor/<ASSIGNMENT_ID>/approve`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+ASSIGNMENT_ID | The ID of the assignment you want to edit
+
 
 ## Delete a Specific Project Assignment
 
