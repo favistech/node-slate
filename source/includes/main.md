@@ -35,7 +35,114 @@ Authenticate your account by using your username and password combination to the
 You must replace <code>xxxxxxxxxxxx</code> with the token retrieved from the /login endpoint.
 </aside>
 
+# General
+
+## Get Country List
+
+This endpoint retrieves a list of countries. You will need to specify a valid country ID when creating projects.
+
+```bash
+curl "https://app.mertzcrew.com/api/countries"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "_id": 230,
+    "abbreviation": "GB",
+    "name": "United Kingdom"
+  },
+  {
+    "_id": 1,
+    "abbreviation": "US",
+    "name": "United States"
+  },
+  {
+    "_id": 231,
+    "abbreviation": "UM",
+    "name": "United States Minor Outlying Islands"
+  }
+]
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/countries`
+
+## Get State/Province List
+
+This endpoint retrieves a list of states/provinces. You will need to specify a valid state/province ID and country combination when creating projects.
+
+```bash
+curl "https://app.mertzcrew.com/api/state_provinces"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "_id": 1,
+    "name": "Alabama",
+    "abbreviation": "AL",
+    "country": 1,
+    "taxes": []
+  },
+  {
+    "_id": 2,
+    "name": "Alaska",
+    "abbreviation": "AK",
+    "country": 1,
+    "taxes": []
+  },
+  {
+    "_id": 4,
+    "name": "Arizona ",
+    "abbreviation": "AZ",
+    "country": 1,
+    "taxes": []
+  }
+]
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/state_provinces`
+
 # Projects
+
+## Get Project Types/Classifications
+
+This endpoint retrieves a list of your project types/classifications.
+
+```bash
+curl "https://app.mertzcrew.com/api/project_classifications" -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "type": "Corporate"
+  },
+  {
+    "type": "Integration"
+  },
+  {
+    "type": "Touring"
+  },
+  {
+    "type": "Other"
+  }
+]
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/project_classifications`
 
 ## Create Project
 
