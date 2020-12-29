@@ -497,11 +497,11 @@ ID | The ID of the project to retrieve all assignments
 
 Parameter | Description
 --------- | -----------
-contractor | The ID of the contractor if this assignment is for a contractor
-employee | The ID of the employee if this assignment is for an employee
+contractor | The email address (or ID if known) of the contractor if this assignment is for a contractor
+employee | The email address (or ID if known) of the employee if this assignment is for an employee
 contractor_role | The ID of the role for this assignment
 daily_rate | The rate amount for this assignment
-pay_model | The ID of the employee 
+pay_model | The ID of the pay rule/model 
 timesheets | The schedule of the assignment - this is a JSON object with a start_date_time, end_date_time, break, is_half_day, is_travel, no_time_entries
 
 
@@ -550,11 +550,11 @@ ASSIGNMENT_ID | The ID of the assignment you want to edit
 Parameter | Description
 --------- | -----------
 _id | The ID of the assignment
-contractor | The ID of the contractor if this assignment is for a contractor
-employee | The ID of the employee if this assignment is for an employee
+contractor | The email address (or ID if known) of the contractor if this assignment is for a contractor
+employee | The email address (or ID if known) of the employee if this assignment is for an employee
 contractor_role | The ID of the role for this assignment
 daily_rate | The rate amount for this assignment
-pay_model | The ID of the employee 
+pay_model | The ID of the pay rule/model 
 timesheets | The schedule of the assignment - this is a JSON object with a start_date_time, end_date_time, break, is_half_day, is_travel, no_time_entries
 
 ## Approve a Specific Project Assignment
