@@ -111,6 +111,34 @@ curl "https://app.mertzcrew.com/api/state_provinces"
 
 `GET https://app.mertzcrew.com/api/state_provinces`
 
+## Get Pay Models/Rules List
+
+This endpoint retrieves a list of pay modes/rules. You will need to specify a valid pay model/rule ID when creating assignments.
+
+```bash
+curl "https://app.mertzcrew.com/api/pay_rules"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "_id": "5cf1744cc8383821e7ee07d2",
+    "name": "12-hour",
+    "hourly_minimum_hours": 10,
+    "enable_half_day": false,
+    "automatic_day_rate_hours": 12,
+    "automatic_day_rate": true,
+    "is_default": false
+  }
+]
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/pay_rules`
+
 # Projects
 
 ## Get Project Types/Classifications
