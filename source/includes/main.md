@@ -611,6 +611,85 @@ Parameter | Description
 ID | The ID of the project of the assignment 
 ASSIGNMENT_ID | The ID of the assignment you want to edit
 
+## Reject a Specific Project Assignment
+This endpoint rejects a specifice assignment for a specific project.
+
+```bash
+curl -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/project/1/contractor/2/reject"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command requires data.json to have the following format:
+
+```json
+{
+	"reason": "Please clarify your hours for this day", 
+}
+```
+
+> For a complete list refer to the section POST parameters.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/project/<ID>/contractor/<CONTRACTOR_ID>/reject`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+CONTRACTOR_ID | The ID of the contractor of the timesheet you want to edit
+TIMESHEET_ENTRY_ID | The ID of the timehseet entry you want to edit
+
+### POST Parameters
+
+Parameter | Description
+--------- | -----------
+reason | The message to the contractor for the rejection.
+
+## Reject a Timesheet Entry for a Specific Project Assignment
+This endpoint rejects a specific timesheet entry assignment for a specific project.
+
+```bash
+curl -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/project/1/contractor/2/reject/3"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command requires data.json to have the following format:
+
+```json
+{
+	"reason": "Please clarify your hours for this day", 
+	"date": "2021-03-08T00:00:00" 
+}
+```
+
+> For a complete list refer to the section POST parameters.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/project/<ID>/contractor/<CONTRACTOR_ID>/reject/<TIMESHEET_ENTRY_ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+CONTRACTOR_ID | The ID of the contractor of the timesheet you want to edit
+TIMESHEET_ENTRY_ID | The ID of the timehseet entry you want to edit
+
+### POST Parameters
+
+Parameter | Description
+--------- | -----------
+reason | The message to the contractor for the rejection of the timesheet entry.
+date | The date of the timesheet entry you would like to reject.
 
 ## Delete a Specific Project Assignment
 
