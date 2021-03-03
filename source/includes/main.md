@@ -366,6 +366,31 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the project to retrieve
 
+## Final Approve a Specific Project
+
+This endpoint final approves a specific project.
+
+```bash
+curl -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/project/1/approve_final"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> For a complete list refer to the section POST parameters.
+
+<aside class="warning">
+Only projects you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`PUT https://app.mertzcrew.com/api/project/<ID>/approve_final`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+
 ## Generate Services - Internal Report Excel Spreadsheet
 
 This endpoint generates an internal services report excel spreadsheet for a specific project supplied by ID.
@@ -610,6 +635,70 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the project of the assignment 
 ASSIGNMENT_ID | The ID of the assignment you want to edit
+
+## Approve a Timesheet Entry for a Specific Project Assignment
+This endpoint approves a specific timesheet entry assignment for a specific project.
+
+```bash
+curl -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/project/1/contractor/2/approve/3"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command requires data.json to have the following format:
+
+```json
+{
+	"date": "2021-03-08T00:00:00" 
+}
+```
+
+> For a complete list refer to the section POST parameters.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/project/<ID>/contractor/<CONTRACTOR_ID>/approve/<TIMESHEET_ENTRY_ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
+CONTRACTOR_ID | The ID of the contractor of the timesheet you want to edit
+TIMESHEET_ENTRY_ID | The ID of the timehseet entry you want to edit
+
+### POST Parameters
+
+Parameter | Description
+--------- | -----------
+date | The date of the timesheet entry you would like to reject.
+
+## Approve all Assignments for a Specific Project
+
+This endpoint approves all assignments for a specific project.
+
+```bash
+curl -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/project/1/approve_all"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> For a complete list refer to the section POST parameters.
+
+<aside class="warning">
+Only project assignments you have access to are usable with this endpoint.
+</aside>
+
+### HTTP Request
+
+`PUT https://app.mertzcrew.com/api/project/<ID>/approve_all`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project of the assignment 
 
 ## Reject a Specific Project Assignment
 This endpoint rejects a specifice assignment for a specific project.
