@@ -692,7 +692,7 @@ Only project assignments you have access to are usable with this endpoint.
 
 ### HTTP Request
 
-`POST https://app.mertzcrew.com/api/project/<ID>/approve_all`s
+`POST https://app.mertzcrew.com/api/project/<ID>/approve_all`
 
 ### URL Parameters
 
