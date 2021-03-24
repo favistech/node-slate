@@ -136,6 +136,7 @@ curl "https://app.mertzcrew.com/api/pay_rules"
         "enable_premium_rate": true,
         "prime_pay_after_xhours": 16,
         "enable_prime_rate": false,
+        "is_deleted": true,
         "weekly_ot_rate_after_xhours": 40,
         "same_day_if_less_then": 8,
         "late_night_end": "05:00",
