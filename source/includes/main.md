@@ -123,26 +123,29 @@ curl "https://app.mertzcrew.com/api/pay_rules"
 
 ```json
 [
-{
-        "_id": "5e59549c4e7ae3001342024d",
-        "name": "Test Name",
-        "is_default": true,
-        "is_default_field_office": false,
-        "is_hourly": false,
-        "is_day_rate": true,
-        "full_day_hours": 10,
-        "holiday_rate": "Regular",
-        "premium_pay_after_xhours": 10,
-        "enable_premium_rate": true,
-        "prime_pay_after_xhours": 16,
-        "enable_prime_rate": false,
-        "is_deleted": true,
-        "weekly_ot_rate_after_xhours": 40,
-        "same_day_if_less_then": 8,
-        "late_night_end": "05:00",
-        "late_night_rate": 0,
-        "enable_holiday_rate": false
-    }
+  {
+      "_id": "5e59549c4e7ae3001342024d",
+      "name": "Test Name",
+      "is_default": false,
+      "is_default_field_office": false,
+      "is_hourly": true,
+      "is_day_rate": false,
+      "minimum_full_day_hours": 10,
+      "enable_minimum_full_day_hours": false,
+      "holiday_rate": "Premium",
+      "enable_holiday_rate": true,
+      "premium_pay_after_xhours": 10,
+      "enable_premium_rate": true,
+      "prime_pay_after_xhours": 16,
+      "enable_prime_rate": false,
+      "is_deleted": false,
+      "weekly_ot_rate_after_xhours": 40,
+      "same_day_if_less_then": 8,
+      "late_night_start": "00:00",
+      "late_night_end": "04:00",
+      "late_night_rate": "Premium",
+      "enable_late_night_rate": true
+  }
 ]
 ```
 
