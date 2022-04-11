@@ -153,6 +153,149 @@ curl "https://app.mertzcrew.com/api/pay_rules"
 
 `GET https://app.mertzcrew.com/api/pay_rules`
 
+## Get Roles List
+
+This endpoint retrieves a list of roles in the system.
+
+```bash
+curl "https://app.mertzcrew.com/api/contractor_roles"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  ...
+  {
+		"_id": 29,
+		"department": {
+			"_id": 2,
+			"name": "Video"
+		},
+		"name": "ARS Technician",
+		"responsibilities": "The Role of the Audience Response System (ARS) Technician involves:\nSetting up, configuring & instructing presenters on incorporating an ARS into the presentation.  Additionally, the technician will be able to deliver the tabulated results in real-time to the appropriate technician/presenter so that the audience response can be seamlessly incorporated into the show."
+	},
+	{
+		"_id": 85,
+		"department": {
+			"_id": 1,
+			"name": "Production"
+		},
+		"name": "Actor/Actress",
+		"responsibilities": "Responsible for portraying a character in a performance or production. EDIT"
+	},
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/contractor_roles`
+
+## Get Role Departments List
+
+This endpoint retrieves a list of department roles in the system.
+
+```bash
+curl "https://app.mertzcrew.com/api/contractor_role_departments"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  ...
+	{
+		"_id": 7,
+		"name": "General",
+		"contractor_roles": []
+	},
+	{
+		"_id": 9,
+		"name": "Integration",
+		"contractor_roles": []
+	},
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/contractor_role_departments`
+
+
+## Get Skills List
+
+This endpoint retrieves a list of skills in the system.
+
+```bash
+curl "https://app.mertzcrew.com/api/skills/all"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+	...
+  {
+		"_id": "55a144cb95fec5358003ea00",
+		"name": "Digico",
+		"department": {
+			"_id": "55a1401f95fec5358003e9c1",
+			"name": "Audio"
+		},
+		"is_cert_validation_required": false,
+		"is_cert_required": false,
+		"is_system": true
+	},
+	{
+		"_id": "55a144cb95fec5358003e9fc",
+		"name": "Kara",
+		"department": {
+			"_id": "55a1401f95fec5358003e9c1",
+			"name": "Audio"
+		},
+		"is_cert_validation_required": false,
+		"is_cert_required": false,
+		"is_system": true
+	},
+    ...
+]
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/skills/all`
+
+## Get Skill Departments List
+
+This endpoint retrieves a list of skill departments in the system.
+
+```bash
+curl "https://app.mertzcrew.com/api/skill_departments"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+	...
+	{
+		"_id": "55a1401f95fec5358003e9c3",
+		"name": "General"
+	},
+	{
+		"_id": "55a1401f95fec5358003e9c5",
+		"name": "Integration"
+	},
+  ...
+]
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/skill_departments`
+
 # Projects
 
 ## Get Project Types/Classifications
@@ -917,6 +1060,41 @@ Parameter | Description
 ID | The ID of the contractor you want to retrieve
 
 # Employees
+
+## Invite Employee
+
+This endpoint adds and sends an invite to your employee.
+
+```bash
+curl -d "@data.json" -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/employee"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command requires data.json to have the following format:
+
+```json
+{
+  "first_name": "Joe",
+  "last_name": "Smith",
+  "role": 29,
+  "username": "Joe.Smith@mertzcrew.com"
+}
+```
+
+> For a complete list refer to the section POST parameters.
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/employee`
+
+### POST Parameters
+
+Parameter | Description
+--------- | -----------
+first_name | First name of your employee
+last_name | Last name of your employee
+role | Role Id [See Roles](#get-roles-list)
+username | Unique email address for your employee
 
 ## Search for Employees
 
