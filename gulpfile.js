@@ -1,17 +1,18 @@
-var fs = require('fs');
+const fs = require('fs');
 
-var gulp = require('gulp');
-var cleanCSS = require('gulp-clean-css');
-var concat = require('gulp-concat');
-var ejs = require('gulp-ejs');
-var gls = require('gulp-live-server');
-var gulpif = require('gulp-if');
-var open = require('gulp-open');
-var prettify = require('gulp-prettify');
-var rename = require("gulp-rename");
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var gutil = require('gulp-util');
+const gulp = require('gulp');
+const cleanCSS = require('gulp-clean-css');
+const concat = require('gulp-concat');
+const ejs = require('gulp-ejs');
+const gls = require('gulp-live-server');
+const gulpif = require('gulp-if');
+const open = require('gulp-open');
+const prettify = require('gulp-prettify');
+const rename = require("gulp-rename");
+const sass = require('gulp-sass')(require('sass'));
+const uglify = require('gulp-uglify');
+const gutil = require('gulp-util');
+
 
 var del = require('del');
 var highlight = require('highlight.js');
@@ -67,11 +68,11 @@ gulp.task('clean', function () {
 });
 
 gulp.task('fonts', function() {
-  return gulp.src('./source/fonts/**/*').pipe(gulp.dest('build/fonts'));
+  return gulp.src('./source/fonts/**/*', { encoding: false }).pipe(gulp.dest('build/fonts'));
 });
 
 gulp.task('images', function() {
-  return gulp.src('./source/images/**/*').pipe(gulp.dest('build/images'));
+  return gulp.src('./source/images/**/*', { encoding: false }).pipe(gulp.dest('build/images'));
 });
 
 gulp.task('js', function() {
@@ -125,25 +126,24 @@ gulp.task('html', function () {
   	.pipe(gulp.dest('./build'));
 });
 
-gulp.task('NO_COMPRESS', function() {
+gulp.task('NO_COMPRESS', async function() {
   COMPRESS = false;
 });
 
-gulp.task('default', ['clean', 'fonts', 'images', 'highlightjs', 'js', 'sass', 'html']);
+gulp.task('default', gulp.series('clean', 'fonts', 'images', 'highlightjs', 'js', 'sass', 'html'));
 
-gulp.task('serve', ['NO_COMPRESS', 'default'], function() {
+const serve = async function() {
+    gulp.watch(['./source/*.html', './source/includes/**/*'], gulp.series('html'));
+    gulp.watch('./source/javascripts/**/*', gulp.series('js'));
+    gulp.watch('./source/stylesheets/**/*', gulp.series('sass'));
+    gulp.watch('./source/index.yml', gulp.series('highlightjs', 'js', 'html'));
 
-  gulp.watch(['./source/*.html', './source/includes/**/*'], ['html']);
-  gulp.watch('./source/javascripts/**/*', ['js']);
-  gulp.watch('./source/stylesheets/**/*', ['sass']);
-  gulp.watch('./source/index.yml', ['highlightjs', 'js', 'html']);
+    var server = gls.static('build', 4567);
+    server.start();
 
-  var server = gls.static('build', 4567);
-  server.start();
-
-  gulp.watch(['build/**/*'], function (file) {
-    server.notify.apply(server, [file]);
-  });
-
-  gulp.src(__filename).pipe(open({uri: 'http://localhost:4567'}));
-});
+    gulp.watch(['build/**/*'], function (file) {
+        server.notify.apply(server, [file]);
+    });
+      gulp.src(__filename).pipe(open({uri: 'http://localhost:4567'}));
+}
+gulp.task('serve', gulp.series('NO_COMPRESS', 'default', serve));
