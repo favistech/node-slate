@@ -23,7 +23,25 @@
       scrollTo: -1,
       scrollHistory: true,
       hashGenerator: function (text, element) {
-        return element.prop('id');
+        var hashValue = element.prop('id') || text;
+
+        hashValue = hashValue.toLowerCase().replace(/\s/g, "-");
+
+        // ADDED BY ROBERT
+        // remove weird characters
+        hashValue = hashValue.replace(/[^\x00-\x7F]/g, "");
+
+        // fix double hyphens
+        while (hashValue.indexOf("--") > -1) {
+            hashValue = hashValue.replace(/--/g, "-");
+        }
+
+        // fix colon-space instances
+        while (hashValue.indexOf(":-") > -1) {
+            hashValue = hashValue.replace(/:-/g, "-");
+        }
+
+        return hashValue;
       }
     }).data('toc-tocify');
 

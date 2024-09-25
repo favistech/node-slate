@@ -552,37 +552,91 @@ ID | The ID of the project of the assignment
 
 This endpoint generates an internal services report excel spreadsheet for a specific project supplied by ID.
 
-<aside class="notice">
-Upcoming release - check back soon.
+```bash
+curl -H "Content-Type: application/json" -X GET "https://app.mertzcrew.com/api/project/<ID>/reports/services"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+<aside class="warning">
+Only projects you have access to are usable with this endpoint.
 </aside>
+
+### HTTP Request
+
+`POST https://app.mertzcrew.com/api/project/<ID>/reports/services`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project the report will be generated for.
+
 
 ## Generate Services - Client Report Excel Spreadsheet
 
-This endpoint generates an client services report excel spreadsheet for a specific project supplied by ID.
+This endpoint generates a client services report excel spreadsheet for a specific project supplied by ID.
 
-<aside class="notice">
-Upcoming release - check back soon.
-</aside>
+```bash
+curl -H "Content-Type: application/json" -X GET "https://app.mertzcrew.com/api/project/<ID>/reports/services_client"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/project/<ID>/reports/services_client`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project the report will be generated for.
+
 
 ## Generate Expense Report Excel Spreadsheet
 
 This endpoint generates an expense report excel spreadsheet for a specific project supplied by ID.
 
-<aside class="notice">
-Upcoming release - check back soon.
-</aside>
+```bash
+curl -H "Content-Type: application/json" -X GET "https://app.mertzcrew.com/api/project/<ID>/reports/expense"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/project/<ID>/reports/expense`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project the report will be generated for.
+
 
 ## Generate Per Diem Report Excel Spreadsheet
 
-This endpoint generates an per diem report excel spreadsheet for a specific project supplied by ID.
+This endpoint generates a per diem report excel spreadsheet for a specific project supplied by ID.
 
-<aside class="notice">
-Upcoming release - check back soon.
-</aside>
+```bash
+curl -H "Content-Type: application/json" -X GET "https://app.mertzcrew.com/api/project/<ID>/reports/per_diem"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+
+### HTTP Request
+
+`GET https://app.mertzcrew.com/api/project/<ID>/reports/per_diem`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the project the report will be generated for.
+
 
 ## Generate Crew List Report Excel Spreadsheet
 
-This endpoint generates an client list report excel spreadsheet for a specific project supplied by ID.
+This endpoint generates a client list report excel spreadsheet for a specific project supplied by ID.
 
 <aside class="notice">
 Upcoming release - check back soon.
@@ -737,6 +791,7 @@ curl -d "@data.json" -H "Content-Type: application/json" -X PUT "https://app.mer
   ...
 }
 ```
+<!--  -->
 
 > For a complete list refer to the section PUT parameters.
 
@@ -1061,41 +1116,6 @@ ID | The ID of the contractor you want to retrieve
 
 # Employees
 
-## Invite Employee
-
-This endpoint adds and sends an invite to your employee.
-
-```bash
-curl -d "@data.json" -H "Content-Type: application/json" -X POST "https://app.mertzcrew.com/api/employee"
-  -H "Authorization: xxxxxxxxxxxx"
-```
-
-> The above command requires data.json to have the following format:
-
-```json
-{
-  "first_name": "Joe",
-  "last_name": "Smith",
-  "role": 29,
-  "username": "Joe.Smith@mertzcrew.com"
-}
-```
-
-> For a complete list refer to the section POST parameters.
-
-### HTTP Request
-
-`POST https://app.mertzcrew.com/api/employee`
-
-### POST Parameters
-
-Parameter | Description
---------- | -----------
-first_name | First name of your employee
-last_name | Last name of your employee
-role | Role Id [See Roles](#get-roles-list)
-username | Unique email address for your employee
-
 ## Search for Employees
 
 This endpoint allows you to search your employee database in Mertzcrew.
@@ -1140,18 +1160,373 @@ ID | The ID of the employee you want to retrieve
 
 # Timesheets
 
-## Get all timesheets
+## Get All Timesheets
 
 This endpoint allows you to get all timesheet periods along with all timesheet entries.
 
-<aside class="notice">
-Upcoming release - check back soon.
+```bash
+curl -X GET "https://app.mertzcrew.com/api/employees/1/timesheets"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "results": [
+        {
+            "start_date": "2024-09-11T07:00:00.000Z",
+            "end_date": "2024-09-17T07:00:00.000Z",
+            "employees": [
+                {
+                    "_id": "57681dbfaf67a09d1f15bf1f",
+                    "first_name": "Jeffery",
+                    "last_name": "Atkisson",
+                    "main_office": "ETP",
+                    "main_office_id": "549630aa4f7b88bb3c8ed42d",
+                    "employee_type": "",
+                    "timesheet_id": "66e2f25d554b3fde54df1cb6",
+                    "hours": 0,
+                    "pto_hours": 0,
+                    "low_rate_hours": 0,
+                    "expenses": 0,
+                    "per_diem": 0,
+                    "status": "Awaiting Submittal"
+                }
+            ]
+        }, 
+```
+<aside class="warning">
+Only timesheets you have access to are returned by this endpoint.
 </aside>
 
-## Get a specific employee timesheet
+### HTTP Request
 
-This endpoint retreives a specific employee timesheet.
+`GET https://app.mertzcrew.com/api/employees/<ID>/timesheets`
 
-<aside class="notice">
-Upcoming release - check back soon.
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Client (client)
+
+
+## Get a Specific Employee Timesheet
+
+This endpoint retreives a specific employees timesheet.
+
+```bash
+curl -X GET "https://app.mertzcrew.com/api/employee/1/?timesheet_details=2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+	"_id": "5e8ce8f10e28c20013236b7c",
+	"user": {
+		"_id": "5e8ce8f10e28c20013236b7b",
+		"postal_code": "12345",
+		"address": "123 Main Street",
+		"last_name": "Iverson",
+		"first_name": "Allen",
+		"city": "Seattle",
+		"state_province": {
+			...
+		},
+		"username": "ai@aol.com",
+		"country": {
+			...
+		},
+
+```
+<aside class="warning">
+Only timesheets you have access to are returned by this endpoint.
 </aside>
+
+
+### HTTP Request
+
+`https://app.mertzcrew.com/api/employee/<ID>/?timesheet_details=<timesheet_id>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the employee whose timesheet you want to approve
+timesheet_id | The ID of the timesheet you want to approve
+
+
+## Force Submit a Specific Employee Timesheet
+
+This endpoint forces the submit of a specific employees timesheet.
+
+```bash
+curl -X POST "https://app.mertzcrew.com/api/employee/1/forcesubmit_timesheet"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": "success",
+    "message": "Timesheet entries submitted successfully.",
+    "data": {
+        "forced_submit_by": "65132a2f6556fc001c84de9e",
+        "forced_submit_on": "2024-09-22T19:55:40.896Z",
+        "is_forced_submit": true,
+        "submitted_on": "2024-09-22T19:55:40.896Z",
+        "start_date": "2024-09-04T07:00:00.000Z",
+        "end_date": "2024-09-10T07:00:00.000Z",
+        "start_date_string": "20240904",
+        "end_date_string": "20240910",
+        "status": "Pending Approval",
+        "_id": "66d87a33d15c1200159eff18",
+    }
+}
+```
+<aside class="warning">
+Only timesheets you have access to can be submitted by this endpoint.
+</aside>
+
+
+### HTTP Request
+
+`https://app.mertzcrew.com/api/employee/<ID>/forcesubmit_timesheet`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the employee you want to submit 
+
+Body      | Description
+--------- | -----------
+timesheet_id | the ID of the timesheet you want to submit
+
+
+## Clarify Employee Timesheet
+
+This endpoint rejects/requests clarification for an employees timesheet. 
+
+```bash
+curl -X POST "https://app.mertzcrew.com/api/employee/1/reject_timesheet/2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+	"status": "success",
+	"message": "Timesheet entries submitted successfully.",
+	"data": {
+		"start_date": "2024-07-10T07:00:00.000Z",
+		"end_date": "2024-07-16T07:00:00.000Z",
+		"start_date_string": "20240710",
+		"end_date_string": "20240716",
+		"status": "Clarify",
+		"_id": "66b14e2384e25463faf76b16",
+		"hours": 0,
+		"pto_hours": 0,
+		"rate_hours": 0,
+
+```
+<aside class="warning">
+Only timesheets you have access to can be clarified by this endpoint.
+</aside>
+
+
+### HTTP Request
+
+`https://app.mertzcrew.com/api/employee/<ID>/reject_timesheet/<timesheet_id>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the employee you want to clarify 
+timesheet_id | the ID of the timesheet you want to clarify
+
+
+
+
+## Approve Employee Timesheet
+
+This endpoint approves a specific employee timesheet. 
+
+```bash
+curl -X POST "https://app.mertzcrew.com/api/employee/1/approve_timesheet/2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+	"status": "success",
+	"message": "Timesheet entries submitted successfully.",
+	"data": {
+		"submitted_on": "2024-09-23T19:42:20.007Z",
+		"is_forced_submit": true,
+		"forced_submit_on": "2024-09-23T19:42:20.007Z",
+		"forced_submit_by": "65132a2f6556fc001c84de9e",
+		"rate_low_hours": 0,
+		"rate_hours": 0,
+		"pto_hours": 0,
+		"hours": 0,
+		"_id": "66c37950e64a8167aa419e48",
+		"status": "Approved",
+		"end_date_string": "20240813",
+		"start_date_string": "20240807",
+		"end_date": "2024-08-13T07:00:00.000Z",
+		"start_date": "2024-08-07T07:00:00.000Z",
+```
+
+
+<aside class="warning">
+Only timesheets you have access to can be approved by this endpoint.
+</aside>
+
+
+### HTTP Request
+
+`https://app.mertzcrew.com/api/employee/<ID>/approve_timesheet/<timesheet_id>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the employee you want to approve 
+timesheet_id | The ID of the timesheet you want to approve 
+
+
+## Get Timesheet Details
+
+This endpoint retrieves the details of a specific timesheet. 
+
+```bash
+curl -X GET "https://app.mertzcrew.com/api/employee/1?timesheet_details=2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+	"_id": "5e8ce8f10e28c20013236b7c",
+	"user": {
+		"_id": "5e8ce8f10e28c20013236b7b",
+		"postal_code": "12345",
+		"address": "123 Main Street",
+		"last_name": "Iverson",
+		"first_name": "Allen",
+		"city": "Seattle",
+		"state_province": {
+			...
+
+```
+
+
+<aside class="warning">
+Only timesheets you have access to can be retrieved by this endpoint.
+</aside>
+
+
+### HTTP Request
+
+`https://app.mertzcrew.com/api/employee/<ID>?timesheet_details=<timesheet_id>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the employee you want to retrieve 
+timesheet_id | The ID of the timesheet you want to retrieve 
+
+
+## Download Timesheets By Employee 
+
+This endpoint retrieves the timesheets of a specific employee as an excel document. 
+
+```bash
+curl -X GET "https://app.mertzcrew.com/api/employee/1?timesheet_details=2&generate_report=application/vnd.ms-excel"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command returns an excel file (.xlsx) where content-type/mime-type is application/vnd.ms-excel
+
+
+<aside class="warning">
+Only timesheets you have access to can be retrieved by this endpoint.
+</aside>
+
+
+### HTTP Request
+
+`https://app.mertzcrew.com/api/employee/<ID>?timesheet_details=<timesheet_id>&generate_report=application/vnd.ms-excel`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the employee whose timesheets you want to download 
+timesheet_id | The ID of the timesheet you want to retrieve
+
+
+## Download Timesheets By Client 
+
+This endpoint retrieves the timesheets from a specific client. 
+
+```bash
+curl -X GET "https://app.mertzcrew.com/api/employees/reports/payroll/1/2?main_office=3&field_office=4"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command returns an excel file (.xlsx) where content-type/mime-type is application/vnd.ms-excel 
+
+
+<aside class="warning">
+Only timesheets you have access to can be retrieved by this endpoint.
+</aside>
+
+
+### HTTP Request
+
+`https://app.mertzcrew.com/api/employees/reports/payroll/<start_date>/<end_date>?main_office=<main_office_id>&field_office=<field_office_id>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+start_date | as a timestamp
+end_date | as a timestamp
+main_office_id | ID of the client's main office. Can be found in the "Get All Timesheets" response
+field_office_id | ID of the field office. Can be found in the "Get All Timesheets" response (optional)
+
+
+
+## Download Timesheets By Start/End Date 
+
+This endpoint retrieves the timesheets from a specific date range. 
+
+```bash
+curl -X GET "https://app.mertzcrew.com/api/employees/reports/payroll/1/2"
+  -H "Authorization: xxxxxxxxxxxx"
+```
+> The above command returns an excel file (.xlsx) where content-type/mime-type is application/vnd.ms-excel
+
+
+<aside class="warning">
+Only timesheets you have access to can be retrieved by this endpoint.
+</aside>
+
+
+### HTTP Request
+
+`https://app.mertzcrew.com/api/employees/reports/payroll/<start_date>/<end_date>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+start_date | as a timestamp
+end_date | as a timestamp
+
+
+
